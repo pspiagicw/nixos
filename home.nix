@@ -31,6 +31,10 @@
     '';
   };
 
+  programs.password-store.enable = true;
+  programs.gpg.enable = true;
+  services.gpg-agent.enable = true;
+
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
