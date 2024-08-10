@@ -12,8 +12,13 @@
     alejandra # Nix formatter
     pinentry-curses
     gcc
-    go
   ];
+
+  programs.go = {
+    enable = true;
+    goPath = "/home/pspiagicw/.local/go/deps";
+    goBin = "/home/pspiagicw/.local/go/bin";
+  };
 
   programs.git = {
     enable = true;
