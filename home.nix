@@ -12,6 +12,7 @@
     alejandra # Nix formatter
     pinentry-curses
     gcc
+    go
   ];
 
   programs.git = {
