@@ -37,6 +37,7 @@
   programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
   };
 
   home.stateVersion = "24.05";
