@@ -33,7 +33,12 @@
     '';
   };
 
-  programs.password-store.enable = true;
+  programs.password-store = {
+    enable = true;
+    settings = {
+      PASSWORD_STORE_DIR = "$XDG_DATA_HOME/.password-store";
+    };
+  };
   programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
