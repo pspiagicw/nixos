@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     neofetch
+    ripgrep
   ];
 
   programs.git = {
@@ -19,6 +20,9 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
+    shellAliases = {
+      v = "nvim";
+    };
   };
 
   home.stateVersion = "24.05";
