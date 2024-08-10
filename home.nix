@@ -7,11 +7,11 @@
   home.homeDirectory = "/home/pspiagicw";
 
   home.packages = with pkgs; [
-    neofetch
     ripgrep
     tmux
     alejandra # Nix formatter
     pinentry-curses
+    gcc
   ];
 
   programs.git = {
@@ -45,6 +45,11 @@
   };
 
   home.stateVersion = "24.05";
+
+  programs.neovim = {
+    viAlias = true;
+    vimAlias = true;
+  };
 
   programs.home-manager.enable = true;
 }
