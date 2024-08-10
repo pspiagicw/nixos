@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     neofetch
     ripgrep
+    tmux
   ];
 
   programs.git = {
@@ -23,6 +24,11 @@
     shellAliases = {
       v = "nvim";
     };
+    initExtra = ''
+
+
+      export PS1='\[\e[92;1m\]\\$\[\e[0m\] '
+    '';
   };
 
   home.stateVersion = "24.05";
