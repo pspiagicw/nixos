@@ -77,7 +77,6 @@
     git
     wget
     nano
-    alejandra
   ];
 
   programs.neovim = {
