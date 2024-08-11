@@ -10,14 +10,15 @@
     ripgrep
     tmux
     alejandra # Nix formatter
-    pinentry-curses
     gcc
+    gopls
+    universal-ctags
   ];
 
   programs.go = {
     enable = true;
-    goPath = "/home/pspiagicw/.local/go/deps";
-    goBin = "/home/pspiagicw/.local/go/bin";
+    goPath = ".local/go";
+    goBin = ".local/go/bin";
   };
 
   programs.git = {
@@ -35,13 +36,14 @@
     initExtra = ''
 
       export PS1='(\[\e[92;1;3m\]\h\[\e[0m\]) \[\e[96;1;3m\]\\$\[\e[0m\] '
+      export PATH=$PATH:$HOME/.local/bin
     '';
   };
 
   programs.password-store = {
     enable = true;
     settings = {
-      PASSWORD_STORE_DIR = "/home/pspiagicw/.password-store";
+      PASSWORD_STORE_DIR = ".password-store";
     };
   };
   programs.gpg.enable = true;
