@@ -4,7 +4,7 @@ pkgs.buildGoModule rec {
   src = pkgs.fetchFromGitHub {
     owner = "pspiagicw";
     repo = "groom";
-    rev = "ff74a2ad3fc27e89c77eeaaff2076393b67bd39e";
+    rev = "3fd54797db3a614cbc3fa43f3e29a152aa01ffde";
     sha256 = "29JW1yi8tcjxnv68Bg2TRllk6rujgkC6i8P72nti/I0=";
   };
 
