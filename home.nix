@@ -67,10 +67,6 @@ in {
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
-    extraPackages = [
-      pkgs.gopls
-      pkgs.delve
-    ];
   };
 
   home.stateVersion = "24.05";
