@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  groom = import ./groom.nix {pkgs = pkgs;};
+in {
   home.username = "pspiagicw";
   home.homeDirectory = "/home/pspiagicw";
 
@@ -10,6 +12,7 @@
     ripgrep
     alejandra # Nix formatter
     universal-ctags
+    groom
   ];
 
   programs.tmux = {
