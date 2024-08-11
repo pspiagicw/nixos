@@ -8,12 +8,13 @@
 
   home.packages = with pkgs; [
     ripgrep
-    tmux
     alejandra # Nix formatter
-    gcc
-    gopls
     universal-ctags
   ];
+
+  programs.tmux = {
+    enable = true;
+  };
 
   programs.go = {
     enable = true;
@@ -52,12 +53,17 @@
     pinentryPackage = pkgs.pinentry-curses;
   };
 
-  home.stateVersion = "24.05";
-
   programs.neovim = {
     viAlias = true;
     vimAlias = true;
+    defaultEditor = true;
+    extraPackages = [
+      pkgs.gopls
+      pkgs.delve
+    ];
   };
+
+  home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
 }
