@@ -15,6 +15,11 @@ in {
     groom
   ];
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
   programs.tmux = {
     enable = true;
   };
