@@ -47,6 +47,7 @@ in {
 
       export PS1='(\[\e[92;1;3m\]\h\[\e[0m\]) \[\e[96;1;3m\]\\$\[\e[0m\] '
       export PATH=$PATH:$HOME/.local/bin
+      export DIRENV_LOG_FORMAT=
     '';
   };
 
