@@ -74,12 +74,6 @@ in {
     '';
   };
 
-  programs.go = {
-    enable = true;
-    goPath = ".local/go";
-    goBin = ".local/go/bin";
-  };
-
   programs.git = {
     enable = true;
     userName = "pspiagicw";
@@ -97,6 +91,8 @@ in {
       export PS1='(\[\e[92;1;3m\]\h\[\e[0m\]) \[\e[96;1;3m\]\\$\[\e[0m\] '
       export PATH=$PATH:$HOME/.local/bin
       export DIRENV_LOG_FORMAT=
+      export GOPATH=$HOME/.local/go
+      export GOBIN=$HOME/.local/go/bin
     '';
   };
 
