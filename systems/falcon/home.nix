@@ -33,30 +33,30 @@
     mouse = true;
     enable = true;
     extraConfig = ''
-        set-option -g status-position top
-        set-option -g focus-events on
+      set-option -g status-position top
+      set-option -g focus-events on
 
-        bind h select-pane -L
-        bind k select-pane -U
-        bind l select-pane -R
-        bind j select-pane -D
+      bind h select-pane -L
+      bind k select-pane -U
+      bind l select-pane -R
+      bind j select-pane -D
 
-       bind -n M-v split-window -h
-       bind -n M-s split-window -v
-       bind -n M-t split-window -v -l 10 -c "#{pane_current_path}"
+      bind -n M-v split-window -h
+      bind -n M-s split-window -v
+      bind -n M-t split-window -v -l 10 -c "#{pane_current_path}"
 
-       bind -n M-c new-window
+      bind -n M-c new-window
 
-       bind -n M-0 select-window -t 0
-       bind -n M-1 select-window -t 1
-       bind -n M-2 select-window -t 2
-       bind -n M-3 select-window -t 3
-       bind -n M-4 select-window -t 4
-       bind -n M-5 select-window -t 5
-       bind -n M-6 select-window -t 6
-       bind -n M-7 select-window -t 7
-       bind -n M-8 select-window -t 8
-       bind -n M-9 select-window -t 9
+      bind -n M-0 select-window -t 0
+      bind -n M-1 select-window -t 1
+      bind -n M-2 select-window -t 2
+      bind -n M-3 select-window -t 3
+      bind -n M-4 select-window -t 4
+      bind -n M-5 select-window -t 5
+      bind -n M-6 select-window -t 6
+      bind -n M-7 select-window -t 7
+      bind -n M-8 select-window -t 8
+      bind -n M-9 select-window -t 9
 
       set -g status-justify absolute-centre
       set -g status-left "[#S] "
