@@ -2,9 +2,7 @@
   config,
   pkgs,
   ...
-}: let
-  groom = import ./groom.nix {pkgs = pkgs;};
-in {
+}: {
   home.username = "pspiagicw";
   home.homeDirectory = "/home/pspiagicw";
 
@@ -12,7 +10,6 @@ in {
     ripgrep
     alejandra # Nix formatter
     universal-ctags
-    groom
     jetbrains-mono
   ];
 
