@@ -16,11 +16,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "falcon"; # Define your hostname.
+  networking.hostName = "starship"; # Define your hostname.
   # Pick only one of the below networking options.
   # Disable wireless support
   # networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+  nixpkgs.config.allowUnfree = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -39,8 +41,8 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.displayManager.gdb.enable = true;
-  services.xserver.desktopmanager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.excludePackages = [pkgs.xterm];
 
   environment.gnome.excludePackages = with pkgs.gnome; [
@@ -48,7 +50,7 @@
     cheese # photo booth
     eog # image viewer
     epiphany # web browser
-    gedit # text editor
+    pkgs.gedit # text editor
     simple-scan # document scanner
     totem # video player
     yelp # help viewer
@@ -67,15 +69,13 @@
     gnome-logs
     gnome-maps
     gnome-music
-    gnome-photos
+    pkgs.gnome-photos
+    pkgs.gnome-tour
     gnome-screenshot
     gnome-system-monitor
     gnome-weather
     gnome-disk-utility
     pkgs.gnome-connections
-  ];
-  environment.systemPackages = with pkgs.gnomeExtensions; [
-    pop-shell
   ];
 
   services.gnome.core-utilities.enable = false;
@@ -87,7 +87,7 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
   # OR
   services.pipewire = {
     enable = true;
