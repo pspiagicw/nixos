@@ -12,7 +12,9 @@
     pika-backup
     gnome.nautilus
     gnome.gnome-tweaks
+    mpc-cli
   ];
+
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -23,8 +25,7 @@
 
   xdg.userDirs.createDirectories = false;
 
-  programs.dconf = {
-    enable = true;
+  dconf = {
     settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
@@ -116,6 +117,64 @@
   services.gpg-agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
+  };
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/pratham/music";
+    extraConfig = ''
+      audio_output {
+      	type "pipewire"
+      name "Pipewire Output"
+      }
+    '';
+  };
+
+  programs.ncmpcpp = {
+    enable = true;
+    bindings = [
+      {
+        key = "j";
+        command = "scroll_down";
+      }
+      {
+        key = "k";
+        command = "scroll_up";
+      }
+      {
+        key = "n";
+        command = "next_found_item";
+      }
+      {
+        key = "N";
+        command = "previous_found_item";
+      }
+      {
+        key = "g";
+        command = "move_home";
+      }
+      {
+        key = "G";
+        command = "move_end";
+      }
+      {
+        key = "h";
+        command = "previous_column";
+      }
+      {
+        key = "l";
+        command = "next_column";
+      }
+    ];
+    settings = {
+      header_visibility = "no";
+      browser_display_mode = "classic";
+      display_bitrate = "yes";
+      progressbar_look = "━━━";
+      message_delay_time = 1;
+      user_interface = "alternative";
+      regular_expressions = "extended";
+    };
   };
 
   home.stateVersion = "24.05";

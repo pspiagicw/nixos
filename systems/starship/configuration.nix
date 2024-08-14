@@ -32,12 +32,30 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
+  i18n.defaultLocale = "en_IN";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_IN";
+    LC_IDENTIFICATION = "en_IN";
+    LC_MEASUREMENT = "en_IN";
+    LC_MONETARY = "en_IN";
+    LC_NAME = "en_IN";
+    LC_NUMERIC = "en_IN";
+    LC_PAPER = "en_IN";
+    LC_TELEPHONE = "en_IN";
+    LC_TIME = "en_IN";
+  };
+
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
+
+  # Configure keymap in X11
+  services.xserver.xkb.layout = "us";
+  services.xserver.xkb.options = "ctrl:nocaps";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -79,9 +97,6 @@
   ];
 
   services.gnome.core-utilities.enable = false;
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -97,14 +112,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Enable the flakes feature and accompanying new nix command-line tool.
-  # nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pratham = {
     isNormalUser = true;
     home = "/home/pratham";
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user. Also include in 'networkmanager' for stuff.
   };
 
   # Enable the Flakes feature and the accompanying new nix command line features.
@@ -131,12 +143,13 @@
   services.openssh.enable = true;
   # services.openssh.openFirewall = true;
 
-  programs.nix-ld.enable = true;
+  # Disable running random binaries.
+  programs.nix-ld.enable = false;
   programs.nix-ld.libraries = with pkgs; [
   ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [1313];
+  # networking.firewall.allowedTCPPorts = [1313];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
