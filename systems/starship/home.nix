@@ -32,13 +32,9 @@
         enable-hot-corners = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
-        switch-to-application-1 = "disabled";
-        switch-to-application-2 = "disabled";
-        switch-to-application-3 = "disabled";
-        switch-to-application-4 = "disabled";
-        minimize = "disabled";
-        switch-applications = "disabled";
-        switch-applications-backwards = "disabled";
+        minimize = [];
+        switch-applications = [];
+        switch-applications-backwards = [];
         close = ["<Shift><Super>c"];
         toggle-maximized = ["<Super>t"];
         toggle-fullscreen = ["<Shift><Super>t"];
@@ -52,6 +48,12 @@
         move-to-workspace-4 = ["<Shift><Super>4"];
         switch-windows = ["<Alt><Tab>"];
         switch-windows-backward = ["<Shift><Alt><Tab>"];
+      };
+      "org/gnome/shell/keybindings" = {
+        switch-to-application-1 = [];
+        switch-to-application-2 = [];
+        switch-to-application-3 = [];
+        switch-to-application-4 = [];
       };
       "org/gnome/desktop/wm/preferences" = {
         num-workspaces = 4;
