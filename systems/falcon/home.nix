@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
     ripgrep
     alejandra # Nix formatter
-    universal-ctags
     jetbrains-mono
   ];
 
@@ -26,13 +25,14 @@
   };
 
   programs.tmux = {
-    terminal = "xterm-256color";
+    terminal = "tmux-256color";
     historyLimit = 10000;
     clock24 = false;
     baseIndex = 1;
     mouse = true;
     enable = true;
     extraConfig = ''
+      set -ag terminal-features ",xterm-256color:RGB"
       set-option -g status-position top
       set-option -g focus-events on
 
