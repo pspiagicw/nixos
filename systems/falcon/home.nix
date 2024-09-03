@@ -117,7 +117,7 @@
 
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/pratham/music";
+    musicDirectory = "/home/pspiagicw/music";
     extraConfig = ''
       audio_output {
       	type "pipewire"
