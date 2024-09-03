@@ -132,7 +132,7 @@
 
   services.mpd = {
     enable = true;
-    musicDirectory = "/home/pratham/music";
+    musicDirectory = "/home/pratham/Music";
     extraConfig = ''
       audio_output {
       	type "pipewire"
