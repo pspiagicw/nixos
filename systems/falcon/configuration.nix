@@ -62,6 +62,7 @@
 
   # Enable sound.
   hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   # OR
   services.pipewire = {
     enable = true;
@@ -80,7 +81,7 @@
   users.users.pspiagicw = {
     isNormalUser = true;
     home = "/home/pspiagicw";
-    extraGroups = ["wheel" "networkmanager" "docker"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "docker" "pipewire" "audio"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable the Flakes feature and the accompanying new nix command line features.
@@ -112,7 +113,7 @@
   ];
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [1313];
+  networking.firewall.allowedTCPPorts = [1313 6600];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

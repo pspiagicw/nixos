@@ -120,8 +120,8 @@
     musicDirectory = "/home/pspiagicw/music";
     extraConfig = ''
       audio_output {
-      	type "pipewire"
-      name "Pipewire Output"
+      	type "pulse"
+        name "Pulseaudio Output"
       }
     '';
   };

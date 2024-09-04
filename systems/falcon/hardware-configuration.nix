@@ -15,6 +15,7 @@
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
+  boot.kernelParams = ["snd-intel-dspcfg.dsp_driver=1"];
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
