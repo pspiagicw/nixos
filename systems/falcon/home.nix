@@ -118,6 +118,8 @@
   services.mpd = {
     enable = true;
     musicDirectory = "/home/pspiagicw/music";
+    network.listenAddress = "0.0.0.0";
+    network.port = 6669;
     extraConfig = ''
       audio_output {
       	type "pulse"

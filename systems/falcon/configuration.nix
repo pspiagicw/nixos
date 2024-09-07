@@ -59,6 +59,7 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+  services.getty.autologinUser = "pspiagicw";
 
   # Enable sound.
   hardware.pulseaudio.enable = false;
@@ -112,8 +113,15 @@
   programs.nix-ld.libraries = with pkgs; [
   ];
 
+  powerManagement.enable = false;
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [1313 6600];
+  networking.firewall.allowedTCPPorts = [1313 6669];
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
