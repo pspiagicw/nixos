@@ -11,16 +11,28 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux"; # Adjust this if needed
-      hmLib = home-manager.lib;
-    in {
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations = {
+      iss = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+	  system = "x86-64-linux";
+          config = {
+	      allowUnfree = true;
+          };
+        };
+        modules = [
+	    ./hosts/iss/home.nix
+        ];
+      };
       falcon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./systems/falcon/configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -30,11 +42,11 @@
           }
         ];
       };
-
       starship = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./systems/starship/configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -42,16 +54,6 @@
 
             home-manager.users.pratham = import ./systems/starship/home.nix;
           }
-        ];
-      };
-    };
-
-    # Configuration for non-NixOS system (iss)
-    homeConfigurations = {
-      ubuntu = hmLib.homeManagerConfiguration {
-        pkgs = import nixpkgs { inherit system; };
-        modules = [
-          ./systems/iss/home.nix
         ];
       };
     };
