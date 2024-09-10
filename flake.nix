@@ -11,11 +11,14 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux"; # Adjust this if needed
-      hmLib = home-manager.lib;
-    in {
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
+    system = "x86_64-linux"; # Adjust this if needed
+    hmLib = home-manager.lib;
+  in {
     nixosConfigurations = {
       falcon = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -48,8 +51,8 @@
 
     # Configuration for non-NixOS system (iss)
     homeConfigurations = {
-      ubuntu = hmLib.homeManagerConfiguration {
-        pkgs = import nixpkgs { inherit system; };
+      pspiagicw = hmLib.homeManagerConfiguration {
+        pkgs = import nixpkgs {inherit system;};
         modules = [
           ./systems/iss/home.nix
         ];
