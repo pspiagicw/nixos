@@ -3,8 +3,8 @@
   pkgs,
   ...
 }: {
-  home.username = "ubuntu";
-  home.homeDirectory = "/home/ubuntu";
+  home.username = "pspiagicw";
+  home.homeDirectory = "/home/pspiagicw";
 
   home.packages = with pkgs; [
     ripgrep
