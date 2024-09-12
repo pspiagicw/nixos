@@ -69,7 +69,51 @@
     pulse.enable = true;
   };
 
-  virtualisation.docker.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+    user = "pspiagicw";
+    group = "users";
+  };
+
+  services.transmission = {
+    enable = true;
+    openRPCPort = true;
+    user = "pspiagicw";
+    group = "users";
+    settings = {
+      rpc-bind-address = "0.0.0.0";
+      rpc-whitelist = "192.168.50.2";
+      download-dir = "/home/pspiagicw/media/movies";
+      incomplete-dir-enabled = true;
+      incomplete-dir = "/home/pspiagicw/media/incomplete";
+    };
+  };
+
+  services.samba = {
+    enable = true;
+    enableNmbd = false;
+    enableWinbindd = false;
+    extraConfig = ''
+      guest account = pspiagicw
+      map to guest = Bad User
+
+      load printers = no
+      printcap name = /dev/null
+
+      log file = /var/log/samba/client.%I
+      log level = 2
+    '';
+    shares = {
+      nas = {
+        "path" = "/mnt/nas";
+        "guest ok" = "yes";
+        "read only" = "no";
+      };
+    };
+  };
+
+  virtualisation.docker.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -81,7 +125,7 @@
   users.users.pspiagicw = {
     isNormalUser = true;
     home = "/home/pspiagicw";
-    extraGroups = ["wheel" "networkmanager" "docker" "pipewire" "audio"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "pipewire" "audio"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable the Flakes feature and the accompanying new nix command line features.
@@ -93,6 +137,9 @@
     git
     wget
     nano
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
   ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -119,9 +166,8 @@
   systemd.targets.hybrid-sleep.enable = false;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [1313 6669];
-
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [1313 6669 445 139];
+  networking.firewall.allowedUDPPorts = [137 138];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
