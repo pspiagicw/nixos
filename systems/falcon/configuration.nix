@@ -16,6 +16,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = {
+    # if you use ipv4, this is all you need
+    "net.ipv4.conf.all.forwarding" = true;
+  };
+
   networking.hostName = "falcon"; # Define your hostname.
   # Pick only one of the below networking options.
   # Disable wireless support
@@ -153,6 +158,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  services.tailscale.enable = true;
   # services.openssh.openFirewall = true;
 
   programs.nix-ld.enable = true;
