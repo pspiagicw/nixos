@@ -81,6 +81,29 @@
     group = "users";
   };
 
+  services.homepage-dashboard = {
+    enable = true;
+    openFirewall = true;
+    services = [
+      {
+        "Falcon Labs" = [
+          {
+            "Jellyfin" = {
+              description = "Media Server";
+              href = "http://falcon:8096";
+            };
+          }
+          {
+            "Transmission" = {
+              description = "Torrenter";
+              href = "http://falcon:9091";
+            };
+          }
+        ];
+      }
+    ];
+  };
+
   services.transmission = {
     enable = true;
     openRPCPort = true;
@@ -88,7 +111,8 @@
     group = "users";
     settings = {
       rpc-bind-address = "0.0.0.0";
-      rpc-whitelist = "192.168.50.2";
+      rpc-whitelist-enabled = false;
+      rpc-whitelist = "0.0.0.0";
       download-dir = "/home/pspiagicw/media/movies";
       incomplete-dir-enabled = true;
       incomplete-dir = "/home/pspiagicw/media/incomplete";
