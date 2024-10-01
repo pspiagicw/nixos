@@ -17,6 +17,7 @@
     ...
   }: let
     system = "x86_64-linux"; # Adjust this if needed
+    aarch64_system = "aarch64-linux";
     hmLib = home-manager.lib;
   in {
     nixosConfigurations = {
@@ -51,10 +52,10 @@
 
     # Configuration for non-NixOS system (iss)
     homeConfigurations = {
-      pspiagicw = hmLib.homeManagerConfiguration {
-        pkgs = import nixpkgs {inherit system;};
+      falconite = hmLib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = aarch64_system;};
         modules = [
-          ./systems/iss/home.nix
+          ./systems/skylab/home.nix
         ];
       };
     };
