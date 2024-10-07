@@ -105,12 +105,24 @@
     enable = true;
     enableBashIntegration = true;
   };
-   
+
+  # programs.borgmatic = {
+  #   enable = true;
+  #   backups = {
+  #     code = {
+  #       location = {
+  #         sourceDirectories = ["/home/falconite/code"];
+  #         repositories = [""];
+  #       };
+  #     };
+  #   };
+  # };
+
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = ["nix-command" "flakes"];
   };
-  
+
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
