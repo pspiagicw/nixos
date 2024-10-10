@@ -10,6 +10,7 @@
     ripgrep
     alejandra # Nix formatter
     jetbrains-mono
+    neo
   ];
 
   programs.gh = {
