@@ -29,6 +29,7 @@
     terminal = "tmux-256color";
     historyLimit = 10000;
     clock24 = false;
+    keyMode = "vi";
     baseIndex = 1;
     mouse = true;
     enable = true;
