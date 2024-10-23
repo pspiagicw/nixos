@@ -43,6 +43,11 @@
       bind l select-pane -R
       bind j select-pane -D
 
+      bind -n M-h select-pane -L
+      bind -n M-k select-pane -U
+      bind -n M-l select-pane -R
+      bind -n M-j select-pane -D
+
       bind -n M-v split-window -h
       bind -n M-s split-window -v
       bind -n M-t split-window -v -l 10 -c "#{pane_current_path}"
@@ -59,6 +64,8 @@
       bind -n M-7 select-window -t 7
       bind -n M-8 select-window -t 8
       bind -n M-9 select-window -t 9
+
+
 
       set -g status-justify absolute-centre
       set -g status-left "[#S] "
